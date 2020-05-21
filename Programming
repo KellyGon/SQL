@@ -96,4 +96,21 @@ SELECT  COUNT(deathdate)*100.0 / COUNT(*) AS percentage_dead  from people
 
 SELECT  (MAX(release_year)-MIN(release_year))/10 AS number_of_decades from films 
 
-/*[7] Sorting*/
+/*[8] Sorting*/
+SELECT title
+FROM films
+ORDER BY release_year DESC; /*Alpha order*/
+
+SELECT birthdate, name
+FROM people
+ORDER BY birthdate, name;
+
+/*[9] Aggregate*/
+SELECT sex, count(*)
+FROM employees
+GROUP BY sex;
+
+SELECT release_year
+FROM films
+GROUP BY release_year
+HAVING COUNT(title) > 10;
