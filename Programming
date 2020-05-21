@@ -9,3 +9,91 @@ SELECT COUNT * FROM people;
 /*distincts observations */
 SELECT DISTINCT column FROM people;
 
+/*[2] Counting */
+
+/*all rows*/
+SELECT COUNT(*) FROM people;
+
+/*non-missing rows*/
+SELECT COUNT(birthdate) FROM people;
+
+/*distinct non-missing rows*/
+SELECT COUNT(DISTINCT birthdate) FROM people
+
+/*[3] Selecting/Counting conditional <> not equal*/
+
+SELECT title
+FROM films
+WHERE title = 'Metropolis';
+
+SELECT COUNT(*)
+FROM films
+WHERE language = 'Hindi';
+
+SELECT title
+FROM films
+WHERE release_year > 1994
+AND release_year < 2000;
+
+SELECT title
+FROM films
+WHERE release_year = 1994
+OR release_year = 2000;
+
+SELECT title
+FROM films
+WHERE (release_year = 1994 OR release_year = 1995)
+AND (certification = 'PG' OR certification = 'R');
+
+SELECT title
+FROM films
+WHERE release_year
+BETWEEN 1994 AND 2000;
+
+SELECT title
+FROM films
+WHERE release_year IN (1994, 2000);
+
+/*[4] Missing Data*/
+
+SELECT COUNT(*)
+FROM people
+WHERE birthdate IS NULL;
+
+SELECT name
+FROM people
+WHERE birthdate IS NOT NULL;
+
+/*[5] Pattern */
+SELECT name
+FROM companies
+WHERE name LIKE 'Data%'; /*DataCamp, Data1,DataC*/
+
+SELECT name
+FROM companies
+WHERE name LIKE 'DataC_mp'; /*DataCamp,DataComp*/
+
+/*[6] Aggregate functions*/
+
+SELECT AVG(budget)
+FROM films;
+
+SELECT MAX(budget)
+FROM films;
+
+SELECT SUM(budget)
+FROM films;
+
+SELECT MAX(budget) AS max_budget,
+       MAX(duration) AS max_duration
+FROM films;
+
+/*[7] Arithmetic*/
+
+SELECT (4.0 / 3.0) AS result;
+
+SELECT  COUNT(deathdate)*100.0 / COUNT(*) AS percentage_dead  from people
+
+SELECT  (MAX(release_year)-MIN(release_year))/10 AS number_of_decades from films 
+
+/*[7] Sorting*/
