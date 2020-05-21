@@ -1,0 +1,11 @@
+/*[1] Selecting */
+
+/* a column */
+SELECT COUNT column FROM people;
+
+/* all columns */
+SELECT COUNT * FROM people;
+
+/*distincts observations */
+SELECT DISTINCT column FROM people;
+
